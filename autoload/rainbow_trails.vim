@@ -15,16 +15,26 @@ let s:long_cutoff = 80
 
 function! rainbow_trails#enable(enable) abort
   " FIXME: Check for timers feature.
-  " FIXME: Check for 256 colours or termguicolors
+  
   if a:enable
-    " FIXME: Document how user can set their own colours
-    highlight default RainbowRed guibg=#ff0000 ctermbg=196
-    highlight default RainbowOrange guibg=#ff7f00 ctermbg=208
-    highlight default RainbowYellow guibg=#ffff00 ctermbg=226
-    highlight default RainbowGreen guibg=#00ff00 ctermbg=46
-    highlight default RainbowBlue guibg=#0000ff ctermbg=21
-    highlight default RainbowIndigo guibg=#00005f ctermbg=17
-    highlight default RainbowViolet guibg=#7f00ff ctermbg=129
+    if &bg=="dark" 
+	   highlight default RainbowRed    guibg=#d20904 
+      highlight default RainbowOrange guibg=#c50d0b 
+      highlight default RainbowYellow guibg=#b81011 
+      highlight default RainbowGreen  guibg=#821519 
+      highlight default RainbowBlue   guibg=#ab1214 
+      highlight default RainbowIndigo guibg=#9d1416 
+      highlight default RainbowViolet guibg=#8f1518 
+	 else
+	   highlight default RainbowRed    guibg=#d20904 
+      highlight default RainbowOrange guibg=#de4100 
+      highlight default RainbowYellow guibg=#e76200 
+      highlight default RainbowGreen  guibg=#ed7f19 
+      highlight default RainbowBlue   guibg=#ee9b39 
+      highlight default RainbowIndigo guibg=#edb35a 
+      highlight default RainbowViolet guibg=#ecca7f 
+	 endif
+
     augroup RainbowTrails
       autocmd!
       autocmd CursorMoved * call s:cursor_moved()
